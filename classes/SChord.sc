@@ -1,6 +1,6 @@
 SChord {
-  classvar notes, alters, shapes;
-  var dur = 1, note, octave = 1, alter, shape;
+  classvar <notes, <alters, <shapes;
+  var <>dur = 1, <>note, <>octave = 2, <>alter, <>shape, <>amp = 1, <>active = false;
 
   *initClass {
 	notes = [\A, \B, \C, \D, \E, \F, \G];
@@ -61,9 +61,16 @@ SChord {
 
   init {
 	note = notes[0];
-	alter = alters[0]
+	alter = alters[0];
 	shape = shapes[0];
 
 	^this;
+  }
+
+  getNotes {
+	if (alter.isNil,
+	  {^(note++octave++shape).asSymbol.asNotes;},
+	  {^(note++alter++octave++shape).asSymbol.asNotes;}
+	)
   }
 }
