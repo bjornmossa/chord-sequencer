@@ -3,6 +3,8 @@ ChordSeq2 {
 
   *initClass {
 	// load synthdef here
+	Class.initClassTree(SChord);
+
 	chords = List();
 	chords.add(SChord());
 
